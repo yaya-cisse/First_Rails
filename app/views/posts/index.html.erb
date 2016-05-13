@@ -32,6 +32,10 @@
   </head>
 
   <body>
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="active"><%= link_to 'Posts', posts_path %></li>
+  </ul>
+
 
     <div class="jumbotron">
       <div class="container">
@@ -40,21 +44,51 @@
           <img src="https://robohash.org/abdel23" alt="I'm abdel23"><br>
           </p>
          <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+          New post
+        </button>
         </div>
         <div class="row">
           <h1>This is the posts page</h1>
         </div>
       </div>
     </div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New post</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+        <div class="form-group">
+          <label for="recipient-name" class="control-label">Title:</label>
+          <input type="text" class="form-control" id="recipient-name">
+        </div>
+        <div class="form-group">
+          <label for="message-text" class="control-label">Content:</label>
+          <textarea class="form-control" id="message-text"></textarea>
+        </div>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
     <!-- Main jumbotron for a primary marketing message or call to action -->
 
     <div class="container">
       <!-- Example row of columns -->
       <% @posts.each do |post| %>
           <div class="col-md-6">
-            <div class="col-md-6">
+            <div class="col-xs-6">
               <p class="lead">
-                <img src=<%="https://robohash.org/#{post.name}"%> alt="I'm Yeoman"><br>
+                <img src=<%="https://robohash.org/#{post.name}"%> class="img-circle" alt="I'm Yeoman"><br>
               </p>
               <p><a class="btn btn-lg btn-success" ng-href="#/"><%=post.name%><span class="glyphicon glyphicon-ok"></span></a></p>
             </div>
