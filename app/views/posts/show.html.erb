@@ -29,11 +29,11 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Editing post ....</h4>
       </div>
-      <form>
+      <form id="post-form">
         <div class="modal-body">
           <div class="form-group">
             <label for="recipient-name" class="control-label">Title:</label>
-            <input type="text" class="form-control" name="title">
+            <input type="text" class="form-control" name="title" value="<%=@post.title%>">
           </div>
           <div class="form-group">
             <label for="message-text" class="control-label">Content:</label>
@@ -42,7 +42,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary" value="SUBMIT">Save changes</button>
         </div>
       </form>
     </div>
@@ -55,7 +55,7 @@
     $('#post-form').on('submit', function(e){
         e.preventDefault();
         $.ajax({
-            url: <%="posts/#{@post.id}"%>, //this is the submit URL
+            url: <%="#{@post.id}"%>, //this is the submit URL
             type: 'PUT',
             data: $('#post-form').serializeArray(),
             dataType: "json",
