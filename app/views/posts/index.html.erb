@@ -75,7 +75,8 @@
             data: $('#post-form').serializeArray(),
             dataType: "json",
             success: function(result){
-                 alert('successfully submitted')
+                 r = alert('successfully submitted')
+                  window.location.reload()
             }
         });
     });
